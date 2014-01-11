@@ -20,7 +20,8 @@ import edu.wpi.first.wpilibj.Joystick;
  */
 public class RobotMain extends IterativeRobot {
     RobotDrive mainDrive;
-    Joystick controller1;
+    Joystick driver;
+    Joystick operator;
     
     /**
      * This function is run when the robot is first started up and should be
@@ -31,13 +32,13 @@ public class RobotMain extends IterativeRobot {
     }
     
     public void teleopInit() {
-        controller1 = new Joystick(1);
+        driver = new Joystick(1);
     }
 
     /**
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
-        mainDrive.tankDrive(controller1.getRawAxis(2), controller1.getRawAxis(4));
+        mainDrive.tankDrive(driver.getRawAxis(2), driver.getRawAxis(4));
     }    
 }
