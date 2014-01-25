@@ -42,6 +42,6 @@ public class RobotMain extends IterativeRobot {
     public void teleopPeriodic() {
         //Don't forget to feed the Watchdog
         Watchdog.getInstance().feed();
-        mainDrive.tankDrive(driver.getRawAxis(2), driver.getRawAxis(4));
+        mainDrive.tankDrive(driver.getRawAxis(2), driver.getRawAxis(5));
     }    
 }
