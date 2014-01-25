@@ -4,7 +4,6 @@
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
-
 package siliconClaymore;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -20,10 +19,11 @@ import edu.wpi.first.wpilibj.Watchdog;
  * directory.
  */
 public class RobotMain extends IterativeRobot {
+
     RobotDrive mainDrive;
     Joystick driver;
     Joystick operator;
-    
+
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -31,7 +31,7 @@ public class RobotMain extends IterativeRobot {
     public void robotInit() {
         mainDrive = new RobotDrive(1, 2);
     }
-    
+
     public void teleopInit() {
         driver = new Joystick(1);
     }
@@ -42,6 +42,6 @@ public class RobotMain extends IterativeRobot {
     public void teleopPeriodic() {
         //Don't forget to feed the Watchdog
         Watchdog.getInstance().feed();
-        mainDrive.tankDrive(driver.getRawAxis(2), driver.getRawAxis(4));
-    }    
+        mainDrive.tankDrive(driver, 2, driver, 5, true);
+    }
 }
