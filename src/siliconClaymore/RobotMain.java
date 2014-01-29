@@ -9,7 +9,9 @@ package siliconClaymore;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Watchdog;
+import siliconClaymore.subsystems.Loader;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -23,6 +25,7 @@ public class RobotMain extends IterativeRobot {
     RobotDrive mainDrive;
     Joystick driver;
     Joystick operator;
+    Loader loader;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -30,6 +33,7 @@ public class RobotMain extends IterativeRobot {
      */
     public void robotInit() {
         mainDrive = new RobotDrive(1, 2);
+        loader = new Loader(new Talon(3), new Talon(4), operator, 6, 1.0D, 1.0D);
     }
 
     public void teleopInit() {
