@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.SpeedController;
  *
  * @author daniel
  */
-public class Loader {
+public class Loader implements Subsystem {
 
     SpeedController posMotor;
     SpeedController treadMotor;
