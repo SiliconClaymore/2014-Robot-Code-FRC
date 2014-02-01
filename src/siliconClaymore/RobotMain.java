@@ -26,13 +26,13 @@ public class RobotMain extends IterativeRobot {
     Drive drive;
     Joystick driver;
     Joystick operator;
-    Loader loader;
+    //Loader loader;
 
     public void teleopInit() {
         driver = new Joystick(1);
         operator = new Joystick(2);
         drive = new Drive(new RobotDrive(1, 2), driver, 2, driver, 5);
-        loader = new Loader(new Talon(3), new Talon(4), operator, 6, 1.0D, 1.0D);
+        //loader = new Loader(new Talon(3), new Talon(4), operator, 6, 1.0D, 1.0D);
     }
 
     /**
@@ -42,6 +42,6 @@ public class RobotMain extends IterativeRobot {
         //Don't forget to feed the Watchdog
         Watchdog.getInstance().feed();
         drive.update();
-        loader.update();
+        //loader.update();
     }
 }
