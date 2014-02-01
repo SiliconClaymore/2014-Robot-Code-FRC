@@ -9,7 +9,10 @@ package siliconClaymore;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Watchdog;
+import siliconClaymore.subsystems.Drive;
+import siliconClaymore.subsystems.Loader;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -20,20 +23,16 @@ import edu.wpi.first.wpilibj.Watchdog;
  */
 public class RobotMain extends IterativeRobot {
 
-    RobotDrive mainDrive;
+    Drive drive;
     Joystick driver;
     Joystick operator;
-
-    /**
-     * This function is run when the robot is first started up and should be
-     * used for any initialization code.
-     */
-    public void robotInit() {
-        mainDrive = new RobotDrive(1, 2);
-    }
+    //Loader loader;
 
     public void teleopInit() {
         driver = new Joystick(1);
+        operator = new Joystick(2);
+        drive = new Drive(new RobotDrive(1, 2), driver, 2, driver, 5);
+        //loader = new Loader(new Talon(3), new Talon(4), operator, 6, 1.0D, 1.0D);
     }
 
     /**
@@ -42,6 +41,7 @@ public class RobotMain extends IterativeRobot {
     public void teleopPeriodic() {
         //Don't forget to feed the Watchdog
         Watchdog.getInstance().feed();
-        mainDrive.tankDrive(driver, 2, driver, 5, true);
+        drive.update();
+        //loader.update();
     }
 }
