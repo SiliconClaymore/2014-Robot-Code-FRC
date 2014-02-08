@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package siliconClaymore.subsystems;
+package siliconClaymore.subsystems.tele;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.RobotDrive;
  *
  * @author daniel
  */
-public class Drive implements Subsystem {
+public class Drive implements SubsystemController {
 
     RobotDrive mainDrive;
     Joystick controller1;

@@ -11,8 +11,8 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Watchdog;
-import siliconClaymore.subsystems.Drive;
-import siliconClaymore.subsystems.Loader;
+import siliconClaymore.subsystems.tele.Drive;
+import siliconClaymore.subsystems.tele.Loader;
 
 /**
  * The VM is configured to automatically run this class, and to call the

@@ -4,13 +4,13 @@
  * and open the template in the editor.
  */
 
-package siliconClaymore.subsystems;
+package siliconClaymore.subsystems.tele;
 
 /**
  *
  * @author daniel
  */
-public interface Subsystem {
+public interface SubsystemController {
     
     public void update();   
 }

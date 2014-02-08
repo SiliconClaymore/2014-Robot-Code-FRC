@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package siliconClaymore.subsystems;
+package siliconClaymore.subsystems.tele;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedController;
@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.SpeedController;
  *
  * @author daniel
  */
-public class Loader implements Subsystem {
+public class Loader implements SubsystemController {
 
     SpeedController posMotor;
     SpeedController treadMotor;
