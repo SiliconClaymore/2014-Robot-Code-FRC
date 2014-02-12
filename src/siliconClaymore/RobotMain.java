@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Watchdog;
+import siliconClaymore.subsystems.LoaderRaw;
 import siliconClaymore.subsystems.tele.Drive;
 import siliconClaymore.subsystems.tele.Loader;
 
@@ -32,7 +33,7 @@ public class RobotMain extends IterativeRobot {
         driver = new Joystick(1);
         operator = new Joystick(2);
         drive = new Drive(new RobotDrive(1, 2), driver, 2, driver, 5);
-        //loader = new Loader(new Talon(3), new Talon(4), operator, 6, 1.0D, 1.0D);
+        //loader = new Loader(new LoaderRaw(new Talon(3), new Talon(4)), operator, 6, 1.0D);
     }
 
     /**

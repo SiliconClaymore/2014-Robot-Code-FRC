@@ -7,6 +7,7 @@ package siliconClaymore.subsystems.tele;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedController;
+import siliconClaymore.subsystems.LoaderRaw;
 
 /**
  *
@@ -14,30 +15,23 @@ import edu.wpi.first.wpilibj.SpeedController;
  */
 public class Loader implements SubsystemController {
 
-    SpeedController posMotor;
-    SpeedController treadMotor;
+    LoaderRaw target;
     Joystick cont;
     int button;
     double posSpeed;
-    double treadSpeed;
 
-    public Loader(SpeedController posMotor, SpeedController treadMotor , Joystick controller, int button, double posSpeed, double treadSpeed) {
-        this.posMotor = posMotor;
-        this.treadMotor = treadMotor;
+    public Loader(LoaderRaw target, Joystick controller, int button, double posSpeed) {
+        this.target = target;
         this.cont = controller;
         this.button = button;
         this.posSpeed = posSpeed;
-        this.treadSpeed = treadSpeed;
     }
 
     public void update() {
         if (cont.getRawButton(button) && !isTop()) {
-            posMotor.set(posSpeed);
-        } else if ( isBottom()) {
-            posMotor.set(-posSpeed);
-            treadMotor.set(treadSpeed);
+            target.smartMove(posSpeed);
         } else {
-            posMotor.set(0D);
+            target.smartMove(-posSpeed);
         }
     }
     
