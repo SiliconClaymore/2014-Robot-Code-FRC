@@ -6,7 +6,6 @@
 package siliconClaymore.subsystems.tele;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.SpeedController;
 import siliconClaymore.subsystems.LoaderRaw;
 
 /**
