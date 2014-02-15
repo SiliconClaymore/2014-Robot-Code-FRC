@@ -12,14 +12,14 @@ import siliconClaymore.subsystems.LoaderRaw;
  *
  * @author daniel
  */
-public class Loader implements SubsystemController {
+public class LoaderCTRL implements SubsystemController {
 
     LoaderRaw target;
     Joystick cont;
     int button;
     double posSpeed;
 
-    public Loader(LoaderRaw target, Joystick controller, int button, double posSpeed) {
+    public LoaderCTRL(LoaderRaw target, Joystick controller, int button, double posSpeed) {
         this.target = target;
         this.cont = controller;
         this.button = button;

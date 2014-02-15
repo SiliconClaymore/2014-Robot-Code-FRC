@@ -16,6 +16,7 @@ public class LoaderRaw {
     
     SpeedController tread;
     SpeedController pos;
+    double angle;
     
     public LoaderRaw (SpeedController tread, SpeedController pos) {
         this.tread = tread;
@@ -45,5 +46,11 @@ public class LoaderRaw {
     
     private boolean isBottom () {
         return false;
+    }
+    public void adjustAngle (double adjust) {
+        angle += adjust;
+    }
+    public void setAngle (double angle) {
+        this.angle = angle;
     }
 }

@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Watchdog;
 import siliconClaymore.subsystems.LoaderRaw;
 import siliconClaymore.subsystems.tele.Drive;
-import siliconClaymore.subsystems.tele.Loader;
+import siliconClaymore.subsystems.tele.LoaderCTRL;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -27,22 +27,24 @@ public class RobotMain extends IterativeRobot {
     Drive drive;
     Joystick driver;
     Joystick operator;
-    //Loader loader;
+    LoaderCTRL loaderCTRL;
+    LoaderRaw loaderRaw;
+    
+    public void robotInit() {
+        drive = new Drive(new RobotDrive(1, 2), driver, 2, driver, 5);
+        loaderRaw = new LoaderRaw(new Talon(3), new Talon(4));
+    }
 
     public void teleopInit() {
         driver = new Joystick(1);
         operator = new Joystick(2);
-        drive = new Drive(new RobotDrive(1, 2), driver, 2, driver, 5);
-        //loader = new Loader(new LoaderRaw(new Talon(3), new Talon(4)), operator, 6, 1.0D);
+        loaderCTRL = new LoaderCTRL(loaderRaw, operator, 6, 1.0D);
     }
-
-    /**
-     * This function is called periodically during operator control
-     */
+    
     public void teleopPeriodic() {
         //Don't forget to feed the Watchdog
         Watchdog.getInstance().feed();
         drive.update();
-        //loader.update();
+        loaderCTRL.update();
     }
 }
