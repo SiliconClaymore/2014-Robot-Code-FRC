@@ -27,18 +27,10 @@ public class LoaderCTRL implements SubsystemController {
     }
 
     public void update() {
-        if (cont.getRawButton(button) && !isTop()) {
+        if (cont.getRawButton(button)) {
             target.smartMove(posSpeed);
         } else {
             target.smartMove(-posSpeed);
         }
-    }
-    
-    private boolean isTop () {
-        return false;
-    }
-    
-    private boolean isBottom () {
-        return false;
     }
 }
