@@ -41,16 +41,19 @@ public class LoaderRaw {
     }
     
     private boolean isTop () {
-        return false;
+        return 90D < angle();
     }
     
     private boolean isBottom () {
-        return false;
+        return angle() < this.angle;
     }
     public void adjustAngle (double adjust) {
         angle += adjust;
     }
     public void setAngle (double angle) {
         this.angle = angle;
+    }
+    private double angle () {
+        return -30D;
     }
 }
