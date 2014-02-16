@@ -20,17 +20,17 @@ public class LoaderCTRL implements SubsystemController {
     double posSpeed;
 
     public LoaderCTRL(LoaderRaw target, Joystick controller, int button, double posSpeed) {
-        this.target = target;
-        this.cont = controller;
-        this.button = button;
-        this.posSpeed = posSpeed;
+	this.target = target;
+	this.cont = controller;
+	this.button = button;
+	this.posSpeed = posSpeed;
     }
 
     public void update() {
-        if (cont.getRawButton(button)) {
-            target.smartMove(posSpeed);
-        } else {
-            target.smartMove(-posSpeed);
-        }
+	if (cont.getRawButton(button)) {
+	    target.smartMove(posSpeed);
+	} else {
+	    target.smartMove(-posSpeed);
+	}
     }
 }

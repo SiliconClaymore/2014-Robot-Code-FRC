@@ -32,21 +32,21 @@ public class RobotMain extends IterativeRobot {
     LoaderRaw loaderRaw;
 
     public void robotInit() {
-        robotDrive = new RobotDrive(new Talon(1), new Talon(2));
-        loaderRaw = new LoaderRaw(new Talon(3), new Talon(4));
+	robotDrive = new RobotDrive(new Talon(1), new Talon(2));
+	loaderRaw = new LoaderRaw(new Talon(3), new Talon(4));
     }
 
     public void teleopInit() {
-        driver = new Joystick(1);
-        operator = new Joystick(2);
-        drive = new Drive(robotDrive, driver, 2, driver, 5);
-        loaderCTRL = new LoaderCTRL(loaderRaw, operator, 6, 1.0D);
+	driver = new Joystick(1);
+	operator = new Joystick(2);
+	drive = new Drive(robotDrive, driver, 2, driver, 5);
+	loaderCTRL = new LoaderCTRL(loaderRaw, operator, 6, 1.0D);
     }
 
     public void teleopPeriodic() {
-        //Don't forget to feed the Watchdog
-        Watchdog.getInstance().feed();
-        drive.update();
-        loaderCTRL.update();
+	//Don't forget to feed the Watchdog
+	Watchdog.getInstance().feed();
+	drive.update();
+	loaderCTRL.update();
     }
 }

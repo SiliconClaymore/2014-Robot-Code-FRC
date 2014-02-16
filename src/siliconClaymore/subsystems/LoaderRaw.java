@@ -20,43 +20,43 @@ public class LoaderRaw {
     double error = 5d;
 
     public LoaderRaw(SpeedController tread, SpeedController pos) {
-        this.tread = tread;
-        this.pos = pos;
+	this.tread = tread;
+	this.pos = pos;
     }
 
     public boolean smartMove(double speed) {
-        if (speed > 0) {
-            int d = resolveError(topAngle, currentAngle(), error);
-            pos.set(speed * d);
-            return d == 1;
-        } else if (speed == 0) {
-            return false;
-        } else {
-            int d = resolveError(topAngle, currentAngle(), error);
-            pos.set(speed * d);
-            return d == -1;
-        }
+	if (speed > 0) {
+	    int d = resolveError(topAngle, currentAngle(), error);
+	    pos.set(speed * d);
+	    return d == 1;
+	} else if (speed == 0) {
+	    return false;
+	} else {
+	    int d = resolveError(topAngle, currentAngle(), error);
+	    pos.set(speed * d);
+	    return d == -1;
+	}
     }
 
     private int resolveError(double dest, double curn, double error) {
-        if (dest - error > currentAngle()) {
-            return 1;
-        } else if (this.topAngle + this.error < currentAngle()) {
-            return -1;
-        } else {
-            return 0;
-        }
+	if (dest - error > currentAngle()) {
+	    return 1;
+	} else if (this.topAngle + this.error < currentAngle()) {
+	    return -1;
+	} else {
+	    return 0;
+	}
     }
 
     public void adjustAngle(double adjust) {
-        bottomAngle += adjust;
+	bottomAngle += adjust;
     }
 
     public void setAngle(double angle) {
-        this.bottomAngle = angle;
+	this.bottomAngle = angle;
     }
 
     private double currentAngle() {
-        return -30D;
+	return -30D;
     }
 }
