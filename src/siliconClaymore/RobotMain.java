@@ -9,6 +9,7 @@ package siliconClaymore;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Watchdog;
 import siliconClaymore.subsystems.LoaderRaw;
@@ -33,7 +34,7 @@ public class RobotMain extends IterativeRobot {
 
     public void robotInit() {
 	robotDrive = new RobotDrive(new Talon(1), new Talon(2));
-	loaderRaw = new LoaderRaw(new Talon(3), new Talon(4));
+	loaderRaw = new LoaderRaw(new Talon(4), new Relay(5));
     }
 
     public void teleopInit() {
@@ -44,8 +45,7 @@ public class RobotMain extends IterativeRobot {
     }
 
     public void teleopPeriodic() {
-	//Don't forget to feed the Watchdog
-	Watchdog.getInstance().feed();
+	Watchdog.getInstance().feed();	//Don't forget to feed the Watchdog
 	drive.update();
 	loaderCTRL.update();
     }
