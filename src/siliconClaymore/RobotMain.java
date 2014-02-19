@@ -31,9 +31,11 @@ public class RobotMain extends IterativeRobot {
     Joystick operator;
     LoaderCTRL loaderCTRL;
     LoaderRaw loaderRaw;
+    Talon launcher;
 
     public void robotInit() {
 	robotDrive = new RobotDrive(new Talon(1), new Talon(2));
+	launcher = new Talon(3);
 	loaderRaw = new LoaderRaw(new Talon(4), new Relay(5));
     }
 
@@ -48,5 +50,10 @@ public class RobotMain extends IterativeRobot {
 	Watchdog.getInstance().feed();	//Don't forget to feed the Watchdog
 	drive.update();
 	loaderCTRL.update();
+	if (operator.getRawButton(4)) {
+	    launcher.set(.5d);
+	} else {
+	    launcher.set(.0d);
+	}
     }
 }
