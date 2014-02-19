@@ -43,10 +43,10 @@ public class LoaderRaw {
 	}
     }
 
-    private int resolveError(double dest, double curn, double error) {
-	if (dest - error > currentAngle()) {
+    static public int resolveError(double dest, double curn, double error) {
+	if (dest - error > curn) {
 	    return 1;
-	} else if (this.topAngle + this.error < currentAngle()) {
+	} else if (dest + error < curn) {
 	    return -1;
 	} else {
 	    return 0;
