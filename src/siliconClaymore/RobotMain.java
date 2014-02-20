@@ -50,10 +50,11 @@ public class RobotMain extends IterativeRobot {
 	Watchdog.getInstance().feed();	//Don't forget to feed the Watchdog
 	drive.update();
 	loaderCTRL.update();
-	if (operator.getRawButton(4)) {
-	    launcher.set(.5d);
-	} else {
-	    launcher.set(.0d);
-	}
+    }
+    
+    public void testPeriodic () {
+	robotDrive.arcadeDrive(driver.getRawAxis(2), driver.getRawAxis(5));
+	launcher.set(operator.getRawAxis(2));
+	loaderRaw.dumbMove(operator.getRawAxis(5), operator.getRawButton(6));
     }
 }

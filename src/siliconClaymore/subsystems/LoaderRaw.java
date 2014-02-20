@@ -25,6 +25,15 @@ public class LoaderRaw {
 	this.tread = tread;
     }
 
+    public void dumbMove(double pos, boolean tread) {
+	this.pos.set(pos);
+	if (tread) {
+	    this.tread.set(Relay.Value.kOn);
+	} else {
+	    this.tread.set(Relay.Value.kOff);
+	}
+    }
+
     public boolean smartMove(double speed) {
 	if (speed > 0) {
 	    int d = resolveError(topAngle, currentAngle(), error);
