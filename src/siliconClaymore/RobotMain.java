@@ -52,6 +52,11 @@ public class RobotMain extends IterativeRobot {
 	loaderCTRL.update();
     }
     
+    public void testInit () {
+	driver = new Joystick(1);
+	operator = new Joystick(2);
+    }
+    
     public void testPeriodic () {
 	robotDrive.arcadeDrive(driver.getRawAxis(2), driver.getRawAxis(5));
 	launcher.set(operator.getRawAxis(2));
