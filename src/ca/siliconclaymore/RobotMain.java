@@ -9,10 +9,12 @@ package ca.siliconclaymore;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Watchdog;
-import ca.siliconclaymore.subsystems.Drive;
-import ca.siliconclaymore.subsystems.Loader;
+import ca.siliconclaymore.subsystems.LoaderRaw;
+import ca.siliconclaymore.subsystems.tele.Drive;
+import ca.siliconclaymore.subsystems.tele.LoaderCTRL;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -24,24 +26,40 @@ import ca.siliconclaymore.subsystems.Loader;
 public class RobotMain extends IterativeRobot {
 
     Drive drive;
+    RobotDrive robotDrive;
     Joystick driver;
     Joystick operator;
-    //Loader loader;
+    LoaderCTRL loaderCTRL;
+    LoaderRaw loaderRaw;
+    Talon launcher;
 
-    public void teleopInit() {
-        driver = new Joystick(1);
-        operator = new Joystick(2);
-        drive = new Drive(new RobotDrive(1, 2), driver, 2, driver, 5);
-        //loader = new Loader(new Talon(3), new Talon(4), operator, 6, 1.0D, 1.0D);
+    public void robotInit() {
+	robotDrive = new RobotDrive(new Talon(1), new Talon(2));
+	launcher = new Talon(3);
+	loaderRaw = new LoaderRaw(new Talon(4), new Relay(5));
     }
 
-    /**
-     * This function is called periodically during operator control
-     */
+    public void teleopInit() {
+	driver = new Joystick(1);
+	operator = new Joystick(2);
+	drive = new Drive(robotDrive, driver, 2, driver, 5);
+	loaderCTRL = new LoaderCTRL(loaderRaw, operator, 6, 1.0D);
+    }
+
     public void teleopPeriodic() {
-        //Don't forget to feed the Watchdog
-        Watchdog.getInstance().feed();
-        drive.update();
-        //loader.update();
+	Watchdog.getInstance().feed();	//Don't forget to feed the Watchdog
+	drive.update();
+	loaderCTRL.update();
+    }
+    
+    public void testInit () {
+	driver = new Joystick(1);
+	operator = new Joystick(2);
+    }
+    
+    public void testPeriodic () {
+	robotDrive.arcadeDrive(driver.getRawAxis(2), driver.getRawAxis(5));
+	launcher.set(operator.getRawAxis(2));
+	loaderRaw.dumbMove(operator.getRawAxis(5), operator.getRawButton(6));
     }
 }
