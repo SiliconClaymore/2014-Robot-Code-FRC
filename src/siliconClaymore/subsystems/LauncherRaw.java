@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.SpeedController;
 public class LauncherRaw {
     
     SpeedController motor;
-    private Position position;
+    private Position position; //Never mind this error
 
     public LauncherRaw(SpeedController motor) {
 	this.motor = motor;
