@@ -4,13 +4,13 @@
  * and open the template in the editor.
  */
 
-package ca.siliconclaymore.aerial_assist.subsystems;
+package ca.siliconclaymore.aerial_assist.subsystems.tele;
 
 /**
  *
  * @author daniel
  */
-public interface Subsystem {
+public interface SubsystemController {
     
     public void update();   
 }
