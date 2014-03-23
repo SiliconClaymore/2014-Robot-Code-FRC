@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package ca.siliconclaymore.subsystems;
+package ca.siliconclaymore.aerial_assist.subsystems;
 
 /**
  *
