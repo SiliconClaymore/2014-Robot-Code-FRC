@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Watchdog;
 import ca.siliconclaymore.aerial_assist.subsystems.LoaderRaw;
 import ca.siliconclaymore.aerial_assist.subsystems.tele.Drive;
+import ca.siliconclaymore.aerial_assist.subsystems.tele.LauncherCTRL;
 import ca.siliconclaymore.aerial_assist.subsystems.tele.LoaderCTRL;
 
 /**
@@ -32,6 +33,7 @@ public class RobotMain extends IterativeRobot {
     Joystick operator;
     LoaderCTRL loaderCTRL;
     LoaderRaw loaderRaw;
+    LauncherCTRL LauncherCTRL;
     Talon launcher;
 
     public void robotInit() {
@@ -44,6 +46,7 @@ public class RobotMain extends IterativeRobot {
 	initJoysticks ();
 	drive = new Drive(robotDrive, driver, 2, driver, 5);
 	loaderCTRL = new LoaderCTRL(loaderRaw, operator, 2, 5, 10, 0.5);
+	LauncherCTRL = new LauncherCTRL(launcher, operator, 5, 11, 6);
     }
 
     public void teleopPeriodic() {

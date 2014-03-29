@@ -6,8 +6,8 @@
 
 package ca.siliconclaymore.aerial_assist.subsystems.tele;
 
-import ca.siliconclaymore.aerial_assist.subsystems.LauncherRaw;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.SpeedController;
 
 /**
  *
@@ -15,13 +15,13 @@ import edu.wpi.first.wpilibj.Joystick;
  */
 public class LauncherCTRL {
     
-    LauncherRaw target;
+    SpeedController target;
     Joystick cont;
     int axis;
     int scaleButton;
     double scale;
 
-    public LauncherCTRL(LauncherRaw target, Joystick cont, int axis, int scaleButton, double scale) {
+    public LauncherCTRL(SpeedController target, Joystick cont, int axis, int scaleButton, double scale) {
 	this.target = target;
 	this.cont = cont;
 	this.axis = axis;
