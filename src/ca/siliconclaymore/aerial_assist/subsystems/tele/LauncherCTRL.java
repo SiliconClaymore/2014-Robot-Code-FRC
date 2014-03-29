@@ -31,9 +31,9 @@ public class LauncherCTRL {
     
     public void update() {
 	if (cont.getRawButton(scaleButton)) {
-	    target.set(cont.getRawAxis(axis));
-	} else {
 	    target.set(cont.getRawAxis(axis) * scale);
+	} else {
+	    target.set(cont.getRawAxis(axis));
 	}
     }
     
