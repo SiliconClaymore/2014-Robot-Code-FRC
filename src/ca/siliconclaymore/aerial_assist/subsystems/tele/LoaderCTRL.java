@@ -16,21 +16,25 @@ public class LoaderCTRL implements SubsystemController {
 
     LoaderRaw target;
     Joystick cont;
-    int button;
-    double posSpeed;
+    int treadButton;
+    int scaleButton;
+    int axis;
+    double scale;
 
-    public LoaderCTRL(LoaderRaw target, Joystick controller, int button, double posSpeed) {
+    public LoaderCTRL(LoaderRaw target, Joystick cont, int treadButton, int scaleButton, int axis, double scale) {
 	this.target = target;
-	this.cont = controller;
-	this.button = button;
-	this.posSpeed = posSpeed;
+	this.cont = cont;
+	this.treadButton = treadButton;
+	this.scaleButton = scaleButton;
+	this.axis = axis;
+	this.scale = scale;
     }
 
     public void update() {
-	if (cont.getRawButton(button)) {
-	    target.smartMove(posSpeed);
+	if (cont.getRawButton(scaleButton)) {
+	    target.dumbMove(cont.getRawAxis(axis), cont.getRawButton(treadButton));
 	} else {
-	    target.smartMove(-posSpeed);
+	    target.dumbMove(cont.getRawAxis(axis) * scale, cont.getRawButton(treadButton));
 	}
     }
 }
