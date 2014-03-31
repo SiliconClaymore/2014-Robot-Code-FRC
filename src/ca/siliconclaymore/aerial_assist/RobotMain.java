@@ -45,8 +45,8 @@ public class RobotMain extends IterativeRobot {
     public void teleopInit() {
 	initJoysticks ();
 	drive = new Drive(robotDrive, driver, 2, secondDriver, 2);
-	loaderCTRL = new LoaderCTRL(loaderRaw, operator, 2, 5, 10, 0.5);
-	LauncherCTRL = new LauncherCTRL(launcher, operator, 5, 11, 0.5);
+	loaderCTRL = new LoaderCTRL(loaderRaw, operator, 2, 5, 9, 0.5);
+	LauncherCTRL = new LauncherCTRL(launcher, operator, 5, 10, 0.5);
     }
 
     public void teleopPeriodic() {
