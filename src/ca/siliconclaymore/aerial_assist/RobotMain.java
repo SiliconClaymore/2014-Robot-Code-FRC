@@ -43,7 +43,7 @@ public class RobotMain extends IterativeRobot {
     }
 
     public void teleopInit() {
-	initJoysticks ();
+	initJoysticks();
 	drive = new Drive(robotDrive, driver, 2, secondDriver, 2);
 	loaderCTRL = new LoaderCTRL(loaderRaw, operator, 2, 5, 10, 0.5);
 	LauncherCTRL = new LauncherCTRL(launcher, operator, 5, 11, 0.5);
@@ -54,18 +54,18 @@ public class RobotMain extends IterativeRobot {
 	drive.update();
 	loaderCTRL.update();
     }
-    
-    public void testInit () {
-	initJoysticks ();
+
+    public void testInit() {
+	initJoysticks();
     }
-    
-    public void testPeriodic () {
+
+    public void testPeriodic() {
 	robotDrive.arcadeDrive(driver.getRawAxis(2), secondDriver.getRawAxis(2));
 	launcher.set(operator.getRawAxis(5));
 	loaderRaw.dumbMove(operator.getRawAxis(2), operator.getRawButton(5));
     }
-    
-    public void initJoysticks () {
+
+    public void initJoysticks() {
 	driver = new Joystick(1);
 	secondDriver = new Joystick(2);
 	operator = new Joystick(3);
