@@ -52,6 +52,7 @@ public class RobotMain extends IterativeRobot {
 	Watchdog.getInstance().feed();	//Don't forget to feed the Watchdog
 	drive.update();
 	loaderCTRL.update();
+	LauncherCTRL.update();
     }
     
     public void testInit () {
