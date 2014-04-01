@@ -3,38 +3,38 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package ca.siliconclaymore.aerial_assist.subsystems.tele;
 
 import edu.wpi.first.wpilibj.Joystick;
-import ca.siliconclaymore.aerial_assist.subsystems.LoaderRaw;
+import edu.wpi.first.wpilibj.SpeedController;
 
 /**
  *
  * @author daniel
  */
-public class LoaderCTRL implements SubsystemController {
-
-    LoaderRaw target;
+public class LauncherCTRL {
+    
+    SpeedController target;
     Joystick cont;
-    int treadButton;
-    int scaleButton;
     int axis;
+    int scaleButton;
     double scale;
 
-    public LoaderCTRL(LoaderRaw target, Joystick cont, int treadButton, int scaleButton, int axis, double scale) {
+    public LauncherCTRL(SpeedController target, Joystick cont, int axis, int scaleButton, double scale) {
 	this.target = target;
 	this.cont = cont;
-	this.treadButton = treadButton;
-	this.scaleButton = scaleButton;
 	this.axis = axis;
+	this.scaleButton = scaleButton;
 	this.scale = scale;
-    }
-
+    }    
+    
     public void update() {
 	if (cont.getRawButton(scaleButton)) {
-	    target.dumbMove(cont.getRawAxis(axis) * scale, cont.getRawButton(treadButton));
+	    target.set(cont.getRawAxis(axis) * scale);
 	} else {
-	    target.dumbMove(cont.getRawAxis(axis), cont.getRawButton(treadButton));
+	    target.set(cont.getRawAxis(axis));
 	}
     }
+    
 }

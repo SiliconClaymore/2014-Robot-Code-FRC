@@ -9,11 +9,11 @@ package ca.siliconclaymore.aerial_assist;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Watchdog;
 import ca.siliconclaymore.aerial_assist.subsystems.LoaderRaw;
 import ca.siliconclaymore.aerial_assist.subsystems.tele.Drive;
+import ca.siliconclaymore.aerial_assist.subsystems.tele.LauncherCTRL;
 import ca.siliconclaymore.aerial_assist.subsystems.tele.LoaderCTRL;
 
 /**
@@ -28,22 +28,24 @@ public class RobotMain extends IterativeRobot {
     Drive drive;
     RobotDrive robotDrive;
     Joystick driver;
+    Joystick secondDriver;
     Joystick operator;
     LoaderCTRL loaderCTRL;
     LoaderRaw loaderRaw;
+    LauncherCTRL LauncherCTRL;
     Talon launcher;
 
     public void robotInit() {
 	robotDrive = new RobotDrive(new Talon(1), new Talon(2));
 	launcher = new Talon(3);
-	loaderRaw = new LoaderRaw(new Talon(4), new Relay(5));
+	loaderRaw = new LoaderRaw(new Talon(4), new Talon(5));
     }
 
     public void teleopInit() {
-	driver = new Joystick(1);
-	operator = new Joystick(2);
-	drive = new Drive(robotDrive, driver, 2, driver, 5);
-	loaderCTRL = new LoaderCTRL(loaderRaw, operator, 6, 1.0D);
+	initJoysticks ();
+	drive = new Drive(robotDrive, driver, 2, secondDriver, 2);
+	loaderCTRL = new LoaderCTRL(loaderRaw, operator, 2, 5, 9, 0.5);
+	LauncherCTRL = new LauncherCTRL(launcher, operator, 5, 10, 0.5);
     }
 
     public void teleopPeriodic() {
@@ -53,13 +55,18 @@ public class RobotMain extends IterativeRobot {
     }
     
     public void testInit () {
-	driver = new Joystick(1);
-	operator = new Joystick(2);
+	initJoysticks ();
     }
     
     public void testPeriodic () {
-	robotDrive.arcadeDrive(driver.getRawAxis(2), driver.getRawAxis(5));
-	launcher.set(operator.getRawAxis(2));
-	loaderRaw.dumbMove(operator.getRawAxis(5), operator.getRawButton(6));
+	robotDrive.arcadeDrive(driver.getRawAxis(2), secondDriver.getRawAxis(2));
+	launcher.set(operator.getRawAxis(5));
+	loaderRaw.dumbMove(operator.getRawAxis(2), operator.getRawButton(5));
+    }
+    
+    public void initJoysticks () {
+	driver = new Joystick(1);
+	secondDriver = new Joystick(2);
+	operator = new Joystick(3);
     }
 }
