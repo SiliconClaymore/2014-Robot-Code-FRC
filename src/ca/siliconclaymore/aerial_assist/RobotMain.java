@@ -11,8 +11,10 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Watchdog;
-import ca.siliconclaymore.aerial_assist.subsystems.Drive;
-import ca.siliconclaymore.aerial_assist.subsystems.Loader;
+import ca.siliconclaymore.aerial_assist.subsystems.LoaderRaw;
+import ca.siliconclaymore.aerial_assist.subsystems.tele.Drive;
+import ca.siliconclaymore.aerial_assist.subsystems.tele.LauncherCTRL;
+import ca.siliconclaymore.aerial_assist.subsystems.tele.LoaderCTRL;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -24,24 +26,47 @@ import ca.siliconclaymore.aerial_assist.subsystems.Loader;
 public class RobotMain extends IterativeRobot {
 
     Drive drive;
+    RobotDrive robotDrive;
     Joystick driver;
+    Joystick secondDriver;
     Joystick operator;
-    //Loader loader;
+    LoaderCTRL loaderCTRL;
+    LoaderRaw loaderRaw;
+    LauncherCTRL LauncherCTRL;
+    Talon launcher;
 
-    public void teleopInit() {
-        driver = new Joystick(1);
-        operator = new Joystick(2);
-        drive = new Drive(new RobotDrive(1, 2), driver, 2, driver, 5);
-        //loader = new Loader(new Talon(3), new Talon(4), operator, 6, 1.0D, 1.0D);
+    public void robotInit() {
+	robotDrive = new RobotDrive(new Talon(1), new Talon(2));
+	launcher = new Talon(3);
+	loaderRaw = new LoaderRaw(new Talon(4), new Talon(5));
     }
 
-    /**
-     * This function is called periodically during operator control
-     */
+    public void teleopInit() {
+	initJoysticks ();
+	drive = new Drive(robotDrive, driver, 2, secondDriver, 2);
+	loaderCTRL = new LoaderCTRL(loaderRaw, operator, 2, 5, 9, 0.5);
+	LauncherCTRL = new LauncherCTRL(launcher, operator, 5, 10, 0.5);
+    }
+
     public void teleopPeriodic() {
-        //Don't forget to feed the Watchdog
-        Watchdog.getInstance().feed();
-        drive.update();
-        //loader.update();
+	Watchdog.getInstance().feed();	//Don't forget to feed the Watchdog
+	drive.update();
+	loaderCTRL.update();
+    }
+    
+    public void testInit () {
+	initJoysticks ();
+    }
+    
+    public void testPeriodic () {
+	robotDrive.arcadeDrive(driver.getRawAxis(2), secondDriver.getRawAxis(2));
+	launcher.set(operator.getRawAxis(5));
+	loaderRaw.dumbMove(operator.getRawAxis(2), operator.getRawButton(5));
+    }
+    
+    public void initJoysticks () {
+	driver = new Joystick(1);
+	secondDriver = new Joystick(2);
+	operator = new Joystick(3);
     }
 }
