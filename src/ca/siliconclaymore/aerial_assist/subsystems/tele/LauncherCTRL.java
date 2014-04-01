@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package ca.siliconclaymore.aerial_assist.subsystems.tele;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -14,7 +13,7 @@ import edu.wpi.first.wpilibj.SpeedController;
  * @author daniel
  */
 public class LauncherCTRL {
-    
+
     SpeedController target;
     Joystick cont;
     int axis;
@@ -27,8 +26,8 @@ public class LauncherCTRL {
 	this.axis = axis;
 	this.scaleButton = scaleButton;
 	this.scale = scale;
-    }    
-    
+    }
+
     public void update() {
 	if (cont.getRawButton(scaleButton)) {
 	    target.set(cont.getRawAxis(axis) * scale);
@@ -36,5 +35,5 @@ public class LauncherCTRL {
 	    target.set(cont.getRawAxis(axis));
 	}
     }
-    
+
 }
