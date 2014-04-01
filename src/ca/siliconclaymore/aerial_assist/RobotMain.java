@@ -60,7 +60,7 @@ public class RobotMain extends IterativeRobot {
     }
 
     public void testPeriodic() {
-	robotDrive.arcadeDrive(driver.getRawAxis(2), secondDriver.getRawAxis(2));
+	robotDrive.tankDrive(driver.getRawAxis(2), secondDriver.getRawAxis(2));
 	launcher.set(operator.getRawAxis(5));
 	loaderRaw.dumbMove(operator.getRawAxis(2), operator.getRawButton(5) ? 1 : (operator.getRawButton(6) ? -1 : 0));
     }

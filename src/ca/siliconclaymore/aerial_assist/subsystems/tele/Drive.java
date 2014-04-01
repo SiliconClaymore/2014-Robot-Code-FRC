@@ -29,6 +29,6 @@ public class Drive implements SubsystemController {
     }
 
     public void update() {
-	mainDrive.arcadeDrive(controller1, axis1, controller2, axis2, true);
+	mainDrive.tankDrive(controller1, axis1, controller2, axis2, true);
     }
 }
