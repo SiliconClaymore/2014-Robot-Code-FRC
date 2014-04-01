@@ -9,7 +9,6 @@ package ca.siliconclaymore.aerial_assist;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Watchdog;
 import ca.siliconclaymore.aerial_assist.subsystems.LoaderRaw;
@@ -39,7 +38,7 @@ public class RobotMain extends IterativeRobot {
     public void robotInit() {
 	robotDrive = new RobotDrive(new Talon(1), new Talon(2));
 	launcher = new Talon(3);
-	loaderRaw = new LoaderRaw(new Talon(4), new Relay(5));
+	loaderRaw = new LoaderRaw(new Talon(4), new Talon(5));
     }
 
     public void teleopInit() {

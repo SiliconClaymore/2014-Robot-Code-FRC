@@ -5,7 +5,6 @@
  */
 package ca.siliconclaymore.aerial_assist.subsystems;
 
-import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.SpeedController;
 
 /**
@@ -15,9 +14,9 @@ import edu.wpi.first.wpilibj.SpeedController;
 public class LoaderRaw {
 
     SpeedController pos;
-    Relay tread;
+    SpeedController tread;
 
-    public LoaderRaw(SpeedController pos, Relay tread) {
+    public LoaderRaw(SpeedController pos, SpeedController tread) {
 	this.pos = pos;
 	this.tread = tread;
     }
@@ -25,9 +24,9 @@ public class LoaderRaw {
     public void dumbMove(double pos, boolean tread) {
 	this.pos.set(pos);
 	if (tread) {
-	    this.tread.set(Relay.Value.kOn);
+	    this.tread.set(1);
 	} else {
-	    this.tread.set(Relay.Value.kOff);
+	    this.tread.set(0);
 	}
     }
 }
