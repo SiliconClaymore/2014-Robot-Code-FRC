@@ -33,10 +33,18 @@ public class LoaderCTRL implements SubsystemController {
     }
 
     public void update() {
+	target.dumbMove(scale(), tread());
+    }
+
+    private double scale() {
 	if (cont.getRawButton(scaleButton)) {
-	    target.dumbMove(cont.getRawAxis(axis) * scale, cont.getRawButton(treadButton) ? 1 : (cont.getRawButton(treadOpp) ? -1 : 0));
+	    return cont.getRawAxis(axis) * scale;
 	} else {
-	    target.dumbMove(cont.getRawAxis(axis), cont.getRawButton(treadButton) ? 1 : (cont.getRawButton(treadOpp) ? -1 : 0));
+	    return cont.getRawAxis(axis);
 	}
+    }
+
+    public int tread() {
+	return cont.getRawButton(treadButton) ? 1 : (cont.getRawButton(treadOpp) ? -1 : 0);
     }
 }
