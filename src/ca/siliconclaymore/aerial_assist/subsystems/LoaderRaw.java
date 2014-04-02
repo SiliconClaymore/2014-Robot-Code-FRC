@@ -12,21 +12,21 @@ import edu.wpi.first.wpilibj.SpeedController;
  * @author daniel
  */
 public class LoaderRaw {
-
+    
     SpeedController pos;
     SpeedController tread;
-
+    
     public LoaderRaw(SpeedController pos, SpeedController tread) {
 	this.pos = pos;
 	this.tread = tread;
     }
-
-    public void dumbMove(double pos, boolean tread) {
+    
+    public void dumbMove(double pos, int treadDir) {
 	this.pos.set(pos);
-	if (tread) {
-	    this.tread.set(1);
+	if (treadDir < -1 || treadDir > 1) {
+	    throw new IllegalArgumentException();
 	} else {
-	    this.tread.set(0);
+	    tread.set(treadDir);
 	}
     }
 }

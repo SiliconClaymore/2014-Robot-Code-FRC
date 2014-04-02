@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package ca.siliconclaymore.aerial_assist.subsystems.tele;
 
 /**
@@ -11,6 +10,6 @@ package ca.siliconclaymore.aerial_assist.subsystems.tele;
  * @author daniel
  */
 public interface SubsystemController {
-    
-    public void update();   
+
+    public void update();
 }
