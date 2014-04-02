@@ -29,11 +29,14 @@ public class LauncherCTRL {
     }
 
     public void update() {
-	if (cont.getRawButton(scaleButton)) {
-	    target.set(cont.getRawAxis(axis) * scale);
-	} else {
-	    target.set(cont.getRawAxis(axis));
-	}
+	target.set(scale());
     }
 
+    private double scale() {
+	if (cont.getRawButton(scaleButton)) {
+	    return cont.getRawAxis(axis) * scale;
+	} else {
+	    return cont.getRawAxis(axis);
+	}
+    }
 }
