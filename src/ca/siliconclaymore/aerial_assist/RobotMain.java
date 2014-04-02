@@ -6,6 +6,7 @@
 /*----------------------------------------------------------------------------*/
 package ca.siliconclaymore.aerial_assist;
 
+import ca.siliconclaymore.aerial_assist.subsystems.Accelerator;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Joystick;
@@ -15,6 +16,7 @@ import ca.siliconclaymore.aerial_assist.subsystems.LoaderRaw;
 import ca.siliconclaymore.aerial_assist.subsystems.tele.Drive;
 import ca.siliconclaymore.aerial_assist.subsystems.tele.LauncherCTRL;
 import ca.siliconclaymore.aerial_assist.subsystems.tele.LoaderCTRL;
+import edu.wpi.first.wpilibj.SpeedController;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -33,12 +35,12 @@ public class RobotMain extends IterativeRobot {
     LoaderCTRL loaderCTRL;
     LoaderRaw loaderRaw;
     LauncherCTRL LauncherCTRL;
-    Talon launcher;
+    SpeedController launcher;
 
     public void robotInit() {
-	robotDrive = new RobotDrive(new Talon(1), new Talon(2));
-	launcher = new Talon(3);
-	loaderRaw = new LoaderRaw(new Talon(4), new Talon(5));
+	robotDrive = new RobotDrive(new Accelerator(new Talon(1), .1, 0, 0), new Accelerator(new Talon(2), .1, 0, 0));
+	launcher = new Accelerator(new Talon(3), .3, 0, 0);
+	loaderRaw = new LoaderRaw(new Accelerator(new Talon(4), .3, 0, 0), new Talon(5));
     }
 
     public void teleopInit() {
