@@ -6,13 +6,13 @@
 /*----------------------------------------------------------------------------*/
 package ca.siliconclaymore.aerial_assist;
 
-import ca.siliconclaymore.aerial_assist.subsystems.Accelerator;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Watchdog;
 import ca.siliconclaymore.aerial_assist.subsystems.LoaderRaw;
+import ca.siliconclaymore.aerial_assist.subsystems.SimpleAccelerator;
 import ca.siliconclaymore.aerial_assist.subsystems.tele.Drive;
 import ca.siliconclaymore.aerial_assist.subsystems.tele.LauncherCTRL;
 import ca.siliconclaymore.aerial_assist.subsystems.tele.LoaderCTRL;
@@ -38,9 +38,9 @@ public class RobotMain extends IterativeRobot {
     SpeedController launcher;
 
     public void robotInit() {
-	robotDrive = new RobotDrive(new Accelerator(new Talon(1), .1, 0, 0), new Accelerator(new Talon(2), .1, 0, 0));
-	launcher = new Accelerator(new Talon(3), .3, 0, 0);
-	loaderRaw = new LoaderRaw(new Accelerator(new Talon(4), .3, 0, 0), new Talon(5));
+	robotDrive = new RobotDrive(new SimpleAccelerator(new Talon(1), .1), new SimpleAccelerator(new Talon(2), .1));
+	launcher = new SimpleAccelerator(new Talon(3), .3);
+	loaderRaw = new LoaderRaw(new SimpleAccelerator(new Talon(4), .3), new Talon(5));
     }
 
     public void teleopInit() {
