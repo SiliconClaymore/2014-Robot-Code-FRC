@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Watchdog;
 import ca.siliconclaymore.aerial_assist.subsystems.LoaderRaw;
+import ca.siliconclaymore.aerial_assist.subsystems.auto.AutoCTRL;
 import ca.siliconclaymore.aerial_assist.subsystems.tele.Drive;
 import ca.siliconclaymore.aerial_assist.subsystems.tele.LauncherCTRL;
 import ca.siliconclaymore.aerial_assist.subsystems.tele.LoaderCTRL;
@@ -34,7 +35,8 @@ public class RobotMain extends IterativeRobot {
     LoaderRaw loaderRaw;
     LauncherCTRL LauncherCTRL;
     Talon launcher;
-
+    AutoCTRL autoCTRL;
+    
     public void robotInit() {
 	robotDrive = new RobotDrive(new Talon(1), new Talon(2));
 	launcher = new Talon(3);
@@ -53,6 +55,14 @@ public class RobotMain extends IterativeRobot {
 	drive.update();
 	loaderCTRL.update();
 	LauncherCTRL.update();
+    }
+    
+    public void autonomousInit() {
+	autoCTRL = new AutoCTRL(robotDrive, 2, .5);
+    }
+
+    public void autonomousPeriodic() {
+	autoCTRL.update();
     }
 
     public void testInit() {
