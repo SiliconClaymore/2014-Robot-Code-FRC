@@ -19,18 +19,22 @@ public class LauncherCTRL implements SubsystemController{
     Joystick cont;
     int axis;
     int scaleButton;
+    int fullButton;
+    int backButton;
     double scale;
 
-    public LauncherCTRL(SpeedController target, Joystick cont, int axis, int scaleButton, double scale) {
+    public LauncherCTRL(SpeedController target, Joystick cont, int axis, int scaleButton, int fullButton, int backButton, double scale) {
 	this.target = target;
 	this.cont = cont;
 	this.axis = axis;
 	this.scaleButton = scaleButton;
+	this.fullButton = fullButton;
+	this.backButton = backButton;
 	this.scale = scale;
     }
 
     public void update() {
-	target.set(scale());
+	    target.set(cont.getRawButton(fullButton) ? -1 : (cont.getRawButton(backButton) ? 1 : scale()));
     }
 
     private double scale() {
