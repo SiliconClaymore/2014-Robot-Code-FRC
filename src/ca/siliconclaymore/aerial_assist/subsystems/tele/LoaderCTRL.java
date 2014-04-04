@@ -5,6 +5,7 @@
  */
 package ca.siliconclaymore.aerial_assist.subsystems.tele;
 
+import ca.siliconclaymore.aerial_assist.subsystems.SubsystemController;
 import edu.wpi.first.wpilibj.Joystick;
 import ca.siliconclaymore.aerial_assist.subsystems.LoaderRaw;
 

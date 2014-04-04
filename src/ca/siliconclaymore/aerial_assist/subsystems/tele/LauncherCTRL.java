@@ -5,6 +5,7 @@
  */
 package ca.siliconclaymore.aerial_assist.subsystems.tele;
 
+import ca.siliconclaymore.aerial_assist.subsystems.SubsystemController;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedController;
 
@@ -12,7 +13,7 @@ import edu.wpi.first.wpilibj.SpeedController;
  *
  * @author daniel
  */
-public class LauncherCTRL {
+public class LauncherCTRL implements SubsystemController{
 
     SpeedController target;
     Joystick cont;
