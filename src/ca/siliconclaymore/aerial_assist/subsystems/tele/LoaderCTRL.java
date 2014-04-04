@@ -22,7 +22,7 @@ public class LoaderCTRL implements SubsystemController {
     int axis;
     double scale;
 
-    public LoaderCTRL(LoaderRaw target, Joystick cont, int treadButton, int treadOpp, int scaleButton, int axis, double scale) {
+    public LoaderCTRL(LoaderRaw target, Joystick cont, int axis, int treadButton, int treadOpp, int scaleButton, double scale) {
 	this.target = target;
 	this.cont = cont;
 	this.treadButton = treadButton;
@@ -38,9 +38,9 @@ public class LoaderCTRL implements SubsystemController {
 
     private double scale() {
 	if (cont.getRawButton(scaleButton)) {
-	    return cont.getRawAxis(axis) * scale;
-	} else {
 	    return cont.getRawAxis(axis);
+	} else {
+	    return cont.getRawAxis(axis) * scale;
 	}
     }
 
