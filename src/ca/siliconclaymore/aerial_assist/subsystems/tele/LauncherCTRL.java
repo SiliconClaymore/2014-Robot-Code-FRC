@@ -34,7 +34,7 @@ public class LauncherCTRL implements SubsystemController{
     }
 
     public void update() {
-	    target.set(cont.getRawButton(fullButton) ? 1 : (cont.getRawButton(backButton) ? -1 : 0));
+	    target.set(cont.getRawButton(fullButton) ? -1 : (cont.getRawButton(backButton) ? 1 : 0));
     }
 
     private double scale() {
