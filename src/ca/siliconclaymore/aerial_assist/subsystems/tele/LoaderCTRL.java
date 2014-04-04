@@ -38,9 +38,9 @@ public class LoaderCTRL implements SubsystemController {
 
     private double scale() {
 	if (cont.getRawButton(scaleButton)) {
-	    return cont.getRawAxis(axis) * scale;
-	} else {
 	    return cont.getRawAxis(axis);
+	} else {
+	    return cont.getRawAxis(axis) * scale;
 	}
     }
 
