@@ -58,7 +58,7 @@ public class RobotMain extends IterativeRobot {
     }
     
     public void autonomousInit() {
-	autoCTRL = new AutoCTRL(robotDrive, 2, -.7);
+	autoCTRL = new AutoCTRL(robotDrive, launcher, 2, -.7, 1);
     }
 
     public void autonomousPeriodic() {
